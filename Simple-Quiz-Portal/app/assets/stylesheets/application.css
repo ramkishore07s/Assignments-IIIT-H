@@ -1,0 +1,150 @@
+     ul {
+	 list-style-type: none;
+	 text-align: left;
+	 padding: 0;
+     }
+     
+     #nav {
+	 top: 0%;
+	 list-style-type: none;
+	 margin: 0;
+	 padding: 14px 16px;
+	 overflow: hidden;
+	 background-color: #333;
+     }
+     navc {
+	 float: left;
+     }
+     li.navc{
+	 top: 0%;
+	  display: inline;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+
+     }
+     
+     a.navc {
+	 padding: 10px;
+	 display: block;
+     }
+     
+     #nav :last-child {
+	 border-right: none;
+	 text-align: right;
+     }
+     
+     .navc a:hover {
+	 background-color:  #4CAF50;
+	 padding: 14px 16px;
+     }
+     .navc .active {
+	 background-color: #4CAF50;
+     }
+     .navc a:visited {
+	 color: white;
+	 text-decoration: none;
+     }
+     #center {
+	 position: absolute;
+	 top: 18%;
+	 z-index: 15;
+	 left: 25%;
+	 margin: -100px 0 0 -150px;
+     }
+     #center2 {
+	 position: absolute;
+	 top: 18%;
+	 z-index: 150;
+	 left: 40%;
+	 margin: -100px 0 0 -150px;
+     }
+     #center3 {
+	 position: absolute;
+	 top: 28%;
+	 z-index: 15;
+	 left: 50%;
+	 margin: -100px 0 0 -150px;
+     }
+     #center4 {
+	 color: white;
+	 left: 150px;
+	 position: absolute;
+	 top: 38%;
+	 z-index: 15;
+	 margin: -100px 0 0 -150px;
+     }
+
+     table{
+	 border-collapse: collapse;
+	 width: 100%;
+     }
+     
+     table ,th, td{
+	 border: 1px solid black;
+     }
+     th,td {
+	 padding: 15px;
+	 text-align: left;
+     }
+     th {
+	 background-color: blue;
+	 color: white;
+	 padding: 2px;
+	 margin: 2px;
+	 height: 50px;
+     }
+     input[type=text],input[type=email],input[type=password] {
+	 width: 100%;
+	 padding: 12px 20px;
+	 margin: 8px 0;
+	 box-sizing: border-box;
+	 border: 2px solid blue;
+	 border-radius: 4px;
+     }
+     input[type=button], input[type=submit], input[type=reset] {
+	 width: 100%;
+	 background-color: #4CAF50;
+	 border: none;
+	 color: white;
+	 padding: 16px 32px;
+	 text-decoration: none;
+	 margin: 4px 2px;
+	 cursor: pointer;
+     }
+     select {
+	 width: 50%;
+	 float: right;
+	 padding: 16px 20px;
+	 border: none;
+	 border-radius: 4px;
+	 background-color: #f1f1f1;
+     }
+     .c {
+	 color: green;
+     }
+     .i {
+	 color: red;
+     }
+     .u {
+	 color: blue;
+     }
+
+     body, html {
+	 height: 100%;
+	 background-image: image-url('img.jpg')
+
+	 /* Full height */
+	 height: 100%; 
+
+	 /* Center and scale the image nicely */
+	 background-position: center;
+	 background-repeat: no-repeat;
+	 background-size: cover;
+
+     }
+
+     .bg { 
+	 /* The image used */
+     }

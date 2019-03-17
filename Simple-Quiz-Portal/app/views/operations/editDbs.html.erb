@@ -1,0 +1,204 @@
+<% provide(:title,"Edit DataBase") %>
+<script>
+ var func = function(int) {
+     for( var i=0; i<6; ++i )
+	 {
+	     document.getElementsByClassName("hide")[i].style.display = "none";
+	     document.getElementsByClassName("colored")[i].style.backgroundColor = "grey";
+	 }
+     
+     document.getElementsByClassName("hide")[int-1].style.display = "block";
+     document.getElementsByClassName("colored")[int-1].style.backgroundColor = "blue";
+     
+ }
+</script>
+<h1>Edit Database</h1>
+<div id="center4" >
+   
+<ul>
+    <li onclick="func(1)" class="colored">Add Subtopic</li>
+    <li onclick="func(2)" class="colored" >Del Subtopic</li>
+    <li onclick="func(3)" class="colored" >Add SingleAnswer Question</li>
+    <li onclick="func(4)" class="colored" >Del SingleAnswer Question</li>
+    <li onclick="func(5)" class="colored" >Add MultipleAnswer Question</li>
+    <li onclick="func(6)" class="colored" >Del MultipleAnswer Question</li>
+</ul>
+</div>
+<div id="center2" style="top:27%">
+    <div class ="hide">
+<h2>Add SubTopic</h2>
+<p>If the topic mentioned is not present, it will be created</p>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+	<%= form_for(@genre, url: addSubTopic_path) do |f| %>
+	    <%= render 'shared/error_messages' %>
+
+	    <%= f.label :topic %>
+	    <%= f.text_field :parent, class: 'form-control' %>
+	    
+	    <%= f.label :subtopic %>
+	    <%= f.text_field :subtype, class: 'form-control' %>
+
+	    <%= f.submit "Create Subtopic", class: "btn btn-primary" %>
+	<% end %>
+    </div>
+</div>
+    </div>
+    
+    
+
+
+    <div class ="hide">
+<h2>Del Subtopic</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+	<%= form_for(@genre, url: delSubTopic_path) do |f| %>
+	    <%= render 'shared/error_messages' %>
+
+	    <%= f.label :subtopic %>
+	    <%= f.select :id, @allGenres.collect { |genre| [ genre.subtype, genre.id ] }  %>
+
+	    <%= f.submit "Delete", class: "btn btn-primary" %>
+	<% end %>
+    </div>
+</div>
+    </div>
+
+
+
+<div class ="hide">
+<h2>Add Question</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+	<%= form_for(@single_answer, url: addQuestion_path) do |f| %>
+	    <%= render 'shared/error_messages' %>
+
+
+	    <%= f.label :question %>
+	    <%= f.text_field :question, class: 'form-control' %>
+
+	    <%= f.label :option1 %>
+	    <%= f.text_field :option1, class: 'form-control' %>
+
+	    <%= f.label :option2 %>
+	    <%= f.text_field :option2, class: 'form-control' %>
+
+	    <%= f.label :option3 %>
+	    <%= f.text_field :option3, class: 'form-control' %>
+
+	    <%= f.label :option4 %>
+	    <%= f.text_field :option4, class: 'form-control' %>
+
+	    <%= f.label :answer %>
+	    <%= f.text_field :answer, class: 'form-control' %>
+
+	    <%= f.label :image_or_audio %>
+	    <%= f.text_field :url, class: 'form-control' %>
+	    
+	    <br />
+	    
+	    <%= f.label :subtopic %>
+	    <%= f.select :genre_id, @allGenres.collect { |genre| [ genre.subtype, genre.id ] }  %>
+
+	    <%= f.submit "Add question", class: "btn btn-primary" %>
+	<% end %>
+    </div>
+</div>
+</div>
+
+
+
+
+<div class ="hide">
+    <h2>Delete Question</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+	<%= form_for(@single_answer, url: delQuestion_path) do |f| %>
+	    <%= render 'shared/error_messages' %>
+
+	    <%= f.label :subtopic %>
+	    <%= f.select :id, @singleAnswers.collect { |genre| [ genre.question, genre.id ] }  %>
+
+	    <%= f.submit "Delete", class: "btn btn-primary" %>
+	<% end %>
+    </div>
+</div>
+</div>
+
+
+
+
+<div class ="hide">
+    <h2>Add MultipleAnswer Question</h2>
+<h2>Add Question</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+	<%= form_for(@multiple_answer, url: addMultipleQuestion_path) do |f| %>
+	    <%= render 'shared/error_messages' %>
+
+
+	    <%= f.label :question %>
+	    <%= f.text_field :question, class: 'form-control' %>
+
+	    <%= f.label :option1 %>
+	    <%= f.radio_button :answer1, true, :checked => true, class: 'form-control' %>Yes
+	    <%= f.radio_button :answer1, false,  class: 'form-control'%>No
+	    <%= f.text_field :option1, class: 'form-control' %>
+	    
+	    <%= f.label :option2 %>
+	    <%= f.radio_button :answer2, true, :checked => true, class: 'form-control' %>Yes
+	    <%= f.radio_button :answer2, false,  class: 'form-control'%>No
+	    <%= f.text_field :option2, class: 'form-control' %>
+	    
+	    <%= f.label :option3 %>
+	    <%= f.radio_button :answer3, true, :checked => true, class: 'form-control' %>Yes
+	    <%= f.radio_button :answer3, false,  class: 'form-control'%>No
+	    <%= f.text_field :option3, class: 'form-control' %>
+	    
+	    <%= f.label :option4 %>
+	    <%= f.radio_button :answer4, true, :checked => true, class: 'form-control' %>Yes
+	    <%= f.radio_button :answer4, false,  class: 'form-control'%>No
+	    <%= f.text_field :option4, class: 'form-control' %>
+
+	    <%= f.label :image_or_audio %>
+	    <%= f.text_field :url, class: 'form-control' %>
+
+	    <br/>
+	    
+	    <%= f.label :subtopic %>
+	    <%= f.select :genre_id, @allGenres.collect { |genre| [ genre.subtype, genre.id ] }  %>
+
+	    
+
+	    
+	    
+	    <%= f.submit "Add question", class: "btn btn-primary" %>
+	<% end %>
+    </div>
+
+</div>
+</div>
+
+
+
+
+<div class ="hide">
+    <h2>Delete MultipleAnswer Question</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+	<%= form_for(@multiple_answer, url: delMultipleQuestion_path) do |f| %>
+	    <%= render 'shared/error_messages' %>
+
+	    <%= f.label :subtopic %>
+	    <%= f.select :id, @multipleAnswers.collect { |genre| [ genre.question, genre.id ] }  %>
+
+	    <%= f.submit "Delete", class: "btn btn-primary" %>
+	<% end %>
+    </div>
+</div>
+</div>
+
+</div>
+<script>
+    func(1);
+</script>

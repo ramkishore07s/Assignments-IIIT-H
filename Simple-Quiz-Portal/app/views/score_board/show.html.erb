@@ -1,0 +1,33 @@
+<%= provide(:title,"ScoreBoard")%>
+<h2>Genre Wise</h2>
+<table>
+    <tr>
+	<th>Genre</th>
+	<th>Score</th>
+    </tr>
+    <% @genre_sum.each do |t| %>
+	<tr>
+	    <td><%= t.name%></td>
+	    <td><%= t.score%></td>
+	</tr>
+    <% end  %>
+</table>
+
+<h2>Subtopic Wise</h2>
+<table>
+    <tr>
+	<th>Genre</th>
+	<th>Subtopic</th>
+	<th>Score</th>
+    </tr>
+    <% @genre_wise.each do |t| %>
+	<tr>
+	    <td><%= t.parent%></td>
+	    <td><%= t.subtype%></td>
+	    <td><%= t.score%></td>
+	</tr>
+    <% end %>
+</table>
+
+	   
+		
