@@ -1,0 +1,84 @@
+Team Member 1: Ramkishore S
+Roll No: 20161092
+
+Team Member 2: Aamir Farhan
+Roll No: 20161078
+
+******-----------------Computer Networks Assignment 1-----------------------*******
+Q1.
+
+CLIENT:
+
+   a. requests to connect to server
+   b. first sends "no of files" it is requesting
+   c. then sends "names of files" it is requesting
+   d. for each file, then receives size of file, and then the file itself.
+
+
+SERVER:
+
+   a. accepts connection from client
+   b. receives "no of files" from client
+   c. then for each file, it sends the file size and then the file.
+
+   Appropriate error handling is used, for both socket operations and file io.
+   Buffer size was assumed to be 1024.
+   Sendfile() syscall was used to send files to client.
+   Uses TCP connection.
+
+Q2.
+
+Persistent:
+
+   1. The client was made to request 7 files, each of size 130 KB, and the
+      time of execution was calculated as follows:
+   
+      ***------------- on Mac OS X ---------------***
+      ➜ python client_persistent.py a b c d e f g
+      0.03s user
+      0.04s system
+      86% cpu
+      0.084 total
+   
+      On comparision, it was faster than non_persistent connection by almost 50%.
+
+   2. The client reuses the same socket for every file it requests.
+      This makes persistent connection faster because it avoids multiple handshakes
+      which is required by non_persistent connection.
+
+   3. For any data that is transferred between server and client, first size of the
+      data is sent in a predetermined binary encoded format, followed by the data.
+
+   4. Server was designed to finish execution after accepting one connection and
+      finishing all its requests because client_persistent.py is only going to make
+      one connection.
+
+   5. Server sending a size of zero for a file means that the file does not exist.
+   
+NonPersistent:
+
+   1. The client was made to request 7 files, each of size 130 KB, and the
+      time of execution was calculated as follows:
+   
+      ***------------- on Mac OS X ---------------***
+      ➜ python client_nonpersistent.py a b c d e f g
+        0.03s user
+	0.05s system
+	78% cpu
+	0.152 total
+
+	On Comparision, this is slower by almost 50%.
+
+   2. The client creates a new socket for every file it requests,
+      closing them after receiving each file
+
+   3. The server was made to accept multiple connections since the client creates a
+      new socket for each file it requests, so the server runs indefinitely.
+
+   4. For any data that is transferred between server and client, first size of the
+      data is sent in a predetermined binary encoded format, followed by the data.
+
+   5. Server sending a size of zero for a file means that the file does not exist.
+
+
+*****------------------------------------------------------------------------------****

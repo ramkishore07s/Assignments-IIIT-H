@@ -1,0 +1,24 @@
+<% provide(:title,"Leader Board") %>
+<h2>Genre Wise</h2>
+<ul>
+    <% @parent.each do |p| %>
+	<li><%= link_to p, "/genre/" + p %></li>
+    <% end  %>
+</ul>
+<div  >
+<h1>Total Wise</h1>
+<table>
+    <tr>
+	<th>Id</th>
+	<th>Name</th>
+	<th>Score</th>
+    </tr>
+<% @users.each do |t| %>
+    <tr>
+	<td><%= t.id %></td>
+	<td><%= t.name %></td>
+	<td><%= t.score %></td>
+    </tr>
+<% end %>
+</table>
+</div>
